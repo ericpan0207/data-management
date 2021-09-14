@@ -1,7 +1,3 @@
-The assignment instructions and starter code (if needed) are posted here.
+# Hw assignments for database course
 
-Please place your solutions in the submission directory then run:
-
-$ ./turnInHw.sh hw1
-
-# data-management
+This is meant to showcase SQL queries and applications of Azure, AWS, and Apache Spark
