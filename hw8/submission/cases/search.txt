@@ -1,0 +1,4 @@
+search "Seattle WA" "Boston MA" 1 1 1
+search "Seattle WA" "Boston MA" 1 34 1
+search "Seattle WA" "Boston MA" 1 1 -1
+search "Seattle WA" "Boston MA" 1 1 0

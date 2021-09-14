@@ -1,0 +1,31 @@
+JUnit version 4.12
+running cases from: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases
+
+running setup
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/pay_indirectFlightsItinerary_insufficient.txt
+failed
+E.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/book_noSearch.txt
+passed
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/reservations_userNotLoggedIn.txt
+failed
+E.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/login_already.txt
+passed
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/create_twoUsers.txt
+passed
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/book_same.txt
+passed
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/login_2users.txt
+passed
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/reservations_paid.txt
+failed
+E.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/login_noSuchUser.txt
+passed
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/search_lessThanN.txt
+passed
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/create_2UsersSameName.txt
+passed
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/search_fake_city.txt
+passed
+.running test: /Users/mccarty/Documents/CSE344/18sp/hw8master/grading/cases/search_indirect.txt
+failed
+E.

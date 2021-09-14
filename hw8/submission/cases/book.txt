@@ -1,0 +1,8 @@
+book 0
+book -1
+create user1 user1 10000
+login user1 user1
+search "Seattle WA" "Boston MA" 1 1 1
+book 0
+book 1
+

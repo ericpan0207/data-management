@@ -1,0 +1,16 @@
+-- Runtime: 14 seconds
+USE hw5index;
+SELECT DISTINCT CASE WHEN (y1.name > y2.name) THEN y2.name ELSE y1.name END AS first_country,
+                CASE WHEN (y1.name > y2.name) THEN y1.name ELSE y2.name END AS second_country
+  FROM country AS y1, country AS y2
+LET num_seas = (SELECT s.name
+                  FROM sea AS s
+                 WHERE y1.`-car_code` IN split(s.`-country`, " ")
+                   AND y2.`-car_code` IN split(s.`-country`, " ")), 
+num_mtns = (SELECT m.name
+              FROM mountain AS m
+             WHERE y1.`-car_code` IN split(m.`-country`, " ")
+               AND y2.`-car_code` IN split(m.`-country`, " "))
+ WHERE y1.`-car_code` != y2.`-car_code`
+   AND len(num_mtns) > 0
+   AND len(num_seas) > 0;

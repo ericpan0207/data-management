@@ -1,0 +1,8 @@
+create user1 user1 10000
+login user1 user1
+search "Seattle WA" "Boston MA" 0 10 14
+pay 3
+book 0
+pay 4
+pay 5
+

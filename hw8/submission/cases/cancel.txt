@@ -1,0 +1,9 @@
+cancel 1
+create user1 user1 102419
+login user1 user1
+cancel -1
+search "Seattle WA" "Boston MA" 1 1 1
+search "Seattle WA" "Boston MA" 0 10 14
+book 4
+cancel 0
+

@@ -1,0 +1,95 @@
+/************ data model **************/
+.symbol_type PersonType
+.symbol_type DescriptionType
+
+.decl person(name:PersonType, description:DescriptionType)
+.input person(filename="DATA/person.facts")
+
+.decl female(name:PersonType)
+.input female(filename="DATA/female.facts")
+
+.decl male(name:PersonType)
+.input male(filename="DATA/male.facts")
+
+.decl parent_child(p1:PersonType, p2:PersonType)
+.input parent_child(filename="DATA/parent_child.facts")
+
+.decl person_living(p:PersonType)
+.input person_living(filename="DATA/person_living.facts")
+
+/************* problem 0 **************/
+/**** Find all children of Priscilla ****/
+.decl p0(x:PersonType, d:DescriptionType)
+.output p0(filename="hw4-0.ans")
+
+// NOTE: if you want to redirect the output to console
+// you can use the syntax:
+.output p0(IO=stdout)
+p0(x,d) :- parent_child("Priscilla",x), person(x,d).
+
+// NOTE: DO NOT remove the declarations or the .output statements below.
+// you can ignore any "No rules/facts defined for relation" warnings when you
+// have not defined the rules for those relations
+/************* problem 1 **************/
+.decl p1(x:PersonType,d:DescriptionType)
+
+.output p1(filename="hw4-1.ans")
+.output p1(IO=stdout)
+
+p1(x, d) :- parent_child("Priscilla",x), person(x,d).
+p1(x, d) :- parent_child(y, x), p1(y, _), person(x,d).
+
+/************* problem 2 **************/
+.decl p2(x:PersonType, d:DescriptionType, m:number)
+.decl womanc(x:PersonType, n:number)
+.decl wmax(n:number)
+.decl manc(x:PersonType, n:number)
+.decl mmax(n:number)
+
+.output p2(filename="hw4-2.ans")
+.output p2(IO=stdout)
+
+womanc(x, n) :- n = sum(1) : parent_child(x, _), female(x).
+wmax(n) :- n = max(c) : womanc(_, c).
+
+manc(x, n) :- n = sum(1) : parent_child(x, _), male(x).
+mmax(n) :- n = max(c) : manc(_, c).
+
+p2(x, d, n) :- womanc(x, n), wmax(n2), n = n2, person(x, d).
+p2(x, d, n) :- manc(x, n), mmax(n2), n = n2, person(x, d).
+
+/************* problem 3 **************/
+.decl p3(x:PersonType, m1:number, m2:number)
+.decl gen(x:PersonType, n:number)
+.output p3(filename="hw4-3.ans")
+.output p3(IO=stdout)
+
+gen(x, n) :- n=0, !parent_child(_, x), person(x, _).
+gen(x, n+1) :- parent_child(y, x), gen(y, n).
+
+p3(x, m1, m2) :- person_living(x), m1 = min(y) : gen(x, y), m2 = max(y) : gen(x, y).
+
+/************* problem 4 **************/
+.decl p4(x:PersonType)
+.decl mother(x:PersonType)
+.decl ancestor(x:PersonType, y:PersonType)
+.decl notMCA(x:PersonType)
+
+.output p4(filename="hw4-4.ans")
+.output p4(IO=stdout)
+
+mother(x) :- female(x), parent_child(x, _).
+ancestor(x, y) :- parent_child(x, y).
+ancestor(x, y) :- parent_child(x, m), ancestor(m, y), mother(m).
+notMCA(x) :- !ancestor(x, y), mother(x), person_living(y).
+p4(x) :- !notMCA(x), mother(x).
+
+/************* problem 5 **************/
+.decl p5(x:PersonType)
+.decl hasChildMCA(x:PersonType)
+
+.output p5(filename="hw4-5.ans")
+.output p5(IO=stdout)
+
+hasChildMCA(x) :- parent_child(x, y), p4(y).
+p5(x) :- p4(x), !hasChildMCA(x).

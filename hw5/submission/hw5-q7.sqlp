@@ -1,0 +1,10 @@
+USE hw5;
+SELECT y.`-car_code` AS country_code,
+       y.name AS country_name,
+       all_seas
+  FROM world AS x, x.mondial.country AS y
+LET all_seas = (SELECT s.name AS sea
+                  FROM x.mondial.sea AS s
+                 WHERE y.`-car_code` IN split(s.`-country`, " "))
+ WHERE len(all_seas) >= 2
+ ORDER BY len(all_seas) DESC;

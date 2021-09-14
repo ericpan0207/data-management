@@ -1,0 +1,16 @@
+-- Runtime: 9 minutes 57 seoncds
+USE hw5;
+SELECT DISTINCT CASE WHEN (y1.name > y2.name) THEN y2.name ELSE y1.name END AS first_country,
+                CASE WHEN (y1.name > y2.name) THEN y1.name ELSE y2.name END AS second_country
+  FROM world AS x, x.mondial.country AS y1, x.mondial.country AS y2
+LET num_seas = (SELECT s.name
+                  FROM x.mondial.sea AS s
+                 WHERE y1.`-car_code` IN split(s.`-country`, " ")
+                   AND y2.`-car_code` IN split(s.`-country`, " ")), 
+num_mtns = (SELECT m.name
+              FROM x.mondial.mountain AS m
+             WHERE y1.`-car_code` IN split(m.`-country`, " ")
+               AND y2.`-car_code` IN split(m.`-country`, " "))
+ WHERE y1.`-car_code` != y2.`-car_code`
+   AND len(num_mtns) > 0
+   AND len(num_seas) > 0;

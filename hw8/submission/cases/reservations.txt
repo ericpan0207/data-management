@@ -1,0 +1,9 @@
+reservations
+create user1 user1 100231
+login user1 user1
+reservations
+search "Seattle WA" "Boston MA" 1 1 1
+book 0
+reservations
+cancel 0
+reservations

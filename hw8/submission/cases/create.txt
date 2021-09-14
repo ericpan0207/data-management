@@ -1,0 +1,3 @@
+create user1 testPassword -21
+create user1 testPassword 100000
+create user1 hello 100
